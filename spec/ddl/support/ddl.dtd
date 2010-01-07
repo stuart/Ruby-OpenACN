@@ -1,0 +1,203 @@
+<!--
+  DTD for Device Descritpion Language
+  
+  No protocol declared
+-->
+
+<!ELEMENT DDL ((DDL | behaviorset | device | languageset)*)>
+<!ATTLIST DDL
+  version CDATA #FIXED "1.0"
+>
+
+<!-- common module content -->
+
+<!ELEMENT label (#PCDATA)>
+<!ATTLIST label
+  set NMTOKEN #IMPLIED
+  key NMTOKEN #IMPLIED
+>
+
+<!ELEMENT alternatefor EMPTY>
+<!ATTLIST alternatefor
+  UUID NMTOKEN #REQUIRED
+>
+  
+<!ELEMENT extends EMPTY>
+<!ATTLIST extends
+  UUID NMTOKEN #REQUIRED
+>
+
+<!ELEMENT UUIDname EMPTY>
+<!ATTLIST UUIDname
+  name NMTOKEN #REQUIRED
+  UUID NMTOKEN #REQUIRED
+>
+
+<!-- languageset module -->
+
+<!ELEMENT languageset (
+  UUIDname*, label?,
+  (alternatefor | extends)*,
+  language+
+)>
+<!ATTLIST languageset
+  UUID NMTOKEN #REQUIRED
+  provider CDATA #REQUIRED
+  date NMTOKEN #REQUIRED
+>
+
+<!-- languageset content -->
+
+<!ELEMENT language (string+)>
+<!ATTLIST language
+  lang CDATA #REQUIRED
+  altlang CDATA #IMPLIED
+>
+
+<!ELEMENT string (#PCDATA)>
+<!ATTLIST string
+  key NMTOKEN #REQUIRED
+>
+
+<!-- behaviorset module -->
+
+<!ELEMENT behaviorset (
+  UUIDname*, label?,
+  (alternatefor | extends)*,
+  behaviordef+
+)>
+<!ATTLIST behaviorset
+  UUID NMTOKEN #REQUIRED
+  provider CDATA #REQUIRED
+  date NMTOKEN #REQUIRED
+>
+
+<!-- behaviorset content -->
+
+<!ELEMENT behaviordef (label, refines+, section+)>
+<!ATTLIST behaviordef
+  name NMTOKEN #REQUIRED
+>
+
+<!ELEMENT refines EMPTY>
+<!ATTLIST refines
+  set NMTOKEN #REQUIRED
+  name NMTOKEN #REQUIRED
+>
+
+<!ELEMENT section (hd?, (section | p)+)>
+
+<!ELEMENT hd (#PCDATA)>
+
+<!ELEMENT p (#PCDATA)>
+<!ATTLIST p xml:space (default | preserve) 'default'>
+
+<!-- device module -->
+
+<!ELEMENT device (
+  UUIDname*, (parameter?, label)?,
+  (alternatefor | extends)*,
+  useprotocol,
+  (parameter?, (property | includedev))+
+)>
+<!ATTLIST device
+  UUID NMTOKEN #REQUIRED
+  provider CDATA #REQUIRED
+  date NMTOKEN #REQUIRED
+>
+
+<!-- device content -->
+
+<!ELEMENT useprotocol EMPTY>
+<!ATTLIST useprotocol
+  name NMTOKEN #REQUIRED
+>
+
+<!ELEMENT property (
+  ( parameter
+  | label
+  | behavior
+  | value
+  | protocol
+  | property
+  | includedev)*
+)>
+<!ATTLIST property
+  id NMTOKEN #IMPLIED
+  sharedefine (true | false) "false"
+  shareref NMTOKEN #IMPLIED
+  array CDATA #IMPLIED
+  valuetype (NULL | immediate | implied | network) #IMPLIED
+>
+
+<!ELEMENT behavior EMPTY>
+<!ATTLIST behavior
+  set NMTOKEN #REQUIRED
+  name NMTOKEN #REQUIRED
+>
+
+<!ELEMENT value (#PCDATA)>
+<!ATTLIST value
+  type (uint | sint | float | string | object) #REQUIRED
+>
+
+<!ELEMENT protocol ANY >
+<!ATTLIST protocol
+  name CDATA #REQUIRED
+>
+
+<!-- parameter declarations -->
+
+<!ELEMENT parameter
+        (choice | mininclusive | maxinclusive | refinement)* >
+<!ATTLIST parameter
+  id NMTOKEN #REQUIRED
+  fields CDATA #REQUIRED
+>
+
+<!-- included devices -->
+
+<!ELEMENT includedev ( setparam* )>
+<!ATTLIST includedev
+  id NMTOKEN #IMPLIED
+  UUID NMTOKEN #REQUIRED
+>
+
+<!ELEMENT setparam 
+        (
+          fix | default | choice 
+          | mininclusive | maxinclusive | refinement
+        )+ >
+<!ATTLIST setparam
+  name NMTOKEN #REQUIRED
+>
+
+<!ELEMENT fix (#PCDATA)>
+<!ATTLIST fix
+  field CDATA #REQUIRED
+>
+
+<!ELEMENT default (#PCDATA)>
+<!ATTLIST default
+  field CDATA #REQUIRED
+>
+
+<!ELEMENT choice (#PCDATA)>
+<!ATTLIST choice
+  field CDATA #REQUIRED
+>
+
+<!ELEMENT mininclusive (#PCDATA)>
+<!ATTLIST mininclusive
+  field CDATA #REQUIRED
+>
+
+<!ELEMENT maxinclusive (#PCDATA)>
+<!ATTLIST maxinclusive
+  field CDATA #REQUIRED
+>
+
+<!ELEMENT refinement (#PCDATA)>
+<!ATTLIST refinement
+  field CDATA #REQUIRED
+>

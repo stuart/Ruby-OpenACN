@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE DDL PUBLIC "-//ESTA//DTD Device Description Language 1.0//EN" "ddl.dtd">
+<DDL version="1.0">
+  <device UUID="U11111111-2222-3333-ffff-aaaaaaaaaaaa" date="2010-01-07" provider="Theatrical Control Products">
+    <UUIDname name="test_languages" UUID="U11111111-2222-3333-ffff-ffffffffffff"/>
+    <label>First Device</label>
+    <useprotocol name="ESTA.DMP"/>
+    <property>
+       <label key="colr" set="test_languages"/>
+    </property>
+  </device>
+  <device UUID="U11111111-2222-3333-ffff-bbbbbbbbbbbb" date="2010-01-07" provider="Theatrical Control Products">
+    <label>Second Device</label>
+       <useprotocol name="ESTA.DMP"/>
+    <property>
+       <label key="colr" set="test_languages"/>
+    </property>
+  </device>
+  <languageset UUID="U11111111-2222-3333-ffff-ffffffffffff" date="2010-01-07" provider="Theatrical Control Products">
+    <language lang="en">
+      <string key="colr">colour</string>
+      <string key="red">red</string>
+      <string key="blue">blue</string>
+    </language>
+    <language lang="en-gb" altlang="en">
+      <string key="colr">colour</string>
+      <string key="red">red</string>
+    </language>
+    <language lang="en-us" altlang="en-gb">
+      <string key="colr">color</string>
+    </language>
+  </languageset>
+  
+  <behaviorset UUID="U11111111-2222-3333-ffff-dddddddddddd" date="2010-01-07" provider="Theatrical Control Products">
+    <behaviordef name="test_behavior">
+      <label>Behaviour Def</label>
+      <refines name="NULL" set="U0000000-0000-0000-0000-000000000000"/>
+      <section>
+        <hd>Behavior Heading</hd>
+        <p>This is the behavior definition.</p>
+      </section>
+    </behaviordef>
+  </behaviorset> 
+  
+  <DDL version="1.0">
+    <device UUID="U11111111-2222-3333-ffff-cccccccccccc" date="2010-01-07" provider="Theatrical Control Products">
+      <label>First Device</label>
+      <useprotocol name="ESTA.DMP"/>
+      <property>
+         <label key="colr" set="test_languages"/>
+      </property>
+    </device>
+  </DDL>
+</DDL>

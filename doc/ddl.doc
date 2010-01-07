@@ -1,0 +1,55 @@
+HOW TO USE DDL
+
+
+ACN::DDL::DDL
+  read(IO) reads a DDL xml file. 
+  write(IO) writes a DDL to a file
+  
+  to_xml 
+  from_xml 
+  errors returns array of errors in the DDL file [error_code, error_text, line_number]
+  devices returns array of devices in the DDL, all array ops available
+
+Module: device, behaviourset, languageset 
+ACN::DDL::BehaviorSet
+
+ACN::DDL::LanguageSet
+
+ACN::DDL::Device
+
+  Methods:
+  UUIDname
+  label
+  alternatefor
+  extends
+  parameter
+  properties
+  includedev
+  
+  to_xml
+  from_xml creates a DDL from an xml representation
+  
+  Attributes
+  UUID uuid attribute
+  provider
+  date
+  
+  
+  
+ACN::DDL::Property
+ACN::DDL::Property::Location NULL Network Implied Immediate
+ACN::DDL::Behaviour  NULL, User Defined
+
+Arrays of properties
+
+Elements:
+
+alternatefor - replace previous version
+
+altlang : language
+
+array : 
+
+behaviour : 
+
+
