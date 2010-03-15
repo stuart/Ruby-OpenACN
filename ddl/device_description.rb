@@ -19,6 +19,12 @@ module ACN
         # TODO set up properties/params/included devs/parent
         DeviceDescription.new(ddl)
       end
+      
+      def parent=(new_parent)
+        raise ArgumentError if (new_parent == self)
+        @parent = new_parent
+      end
+      
     end
     
     

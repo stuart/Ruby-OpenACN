@@ -1,9 +1,16 @@
-OpenACN Ruby
+Ruby OpenACN 
 
-ACN is the Arcitecture for Control Networks, a set of protocols and languages for
+ACN is the Architecture for Control Networks, a set of protocols and languages for
 the control of entertainment technology.
 
-This package consists of Ruby language bindings for the OpenACN library as well as Ruby only 
+This package will consist of Ruby language bindings for the OpenACN library as well as Ruby only 
 classes for using the ACN Device Description Language (DDL)
 
 See www.openacn.org for the openACN C library and details of the ACN protocols.
+
+Current status: 
+        Work on DDL library has been started.
+        DMP bindings not started.
+        RLP not started.
+        STL not started.
+
