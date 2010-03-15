@@ -105,7 +105,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a> require File.expand_path(File.dirname(__FILE__) + '/behaviour_set.rb')</pre></td>
+            <td><pre><a name="line9">9</a> require File.expand_path(File.dirname(__FILE__) + '/behavior_set.rb')</pre></td>
           </tr>
         
           
@@ -267,7 +267,7 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line36">36</a>       attr_accessor :behaviour_sets</pre></td>
+            <td><pre><a name="line36">36</a>       attr_accessor :behavior_sets</pre></td>
           </tr>
         
           
@@ -339,7 +339,7 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line48">48</a>         @behaviour_sets = []</pre></td>
+            <td><pre><a name="line48">48</a>         @behavior_sets = []</pre></td>
           </tr>
         
           
@@ -597,7 +597,7 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line91">91</a>           @behaviour_sets &lt;&lt; BehaviourSet.from_xml(self, xml)</pre></td>
+            <td><pre><a name="line91">91</a>           @behavior_sets &lt;&lt; BehaviorSet.from_xml(self, xml)</pre></td>
           </tr>
         
           
@@ -627,7 +627,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line96">96</a>         @devices + @behaviour_sets + @language_sets</pre></td>
+            <td><pre><a name="line96">96</a>         @devices + @behavior_sets + @language_sets</pre></td>
           </tr>
         
           
@@ -693,13 +693,13 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line107">107</a>       def add_behaviour_set(opts ={})</pre></td>
+            <td><pre><a name="line107">107</a>       def add_behavior_set(opts ={})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line108">108</a>         behaviour_sets &lt;&lt; BehaviourSet.new(self,opts)</pre></td>
+            <td><pre><a name="line108">108</a>         behavior_sets &lt;&lt; BehaviorSet.new(self,opts)</pre></td>
           </tr>
         
           
@@ -765,13 +765,13 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line119">119</a>       def get_behaviour_set(uuid)</pre></td>
+            <td><pre><a name="line119">119</a>       def get_behavior_set(uuid)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line120">120</a>         behaviour_sets.find{|d| d.uuid == uuid}</pre></td>
+            <td><pre><a name="line120">120</a>         behavior_sets.find{|d| d.uuid == uuid}</pre></td>
           </tr>
         
           

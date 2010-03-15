@@ -8,16 +8,27 @@ module ACN
       attr_accessor :parent # Parent device if this is included.
       
       def initialize(ddl,opts = {})
-        @properties = opts[:properties]
-        @parameters = opts[:parameters]
-        
+        @properties = opts[:properties] || {}
+        @parameters = opts[:parameters] || {}
+        @included_devices = opts[:included_devices] || {}
+        @parent = opts[:parent] || nil
         super
       end
       
       def from_nokogiri(ddl,xml)
-        # TODO set up properties/params/included devs
+        # TODO set up properties/params/included devs/parent
         DeviceDescription.new(ddl)
       end
     end
+    
+    
+    class Property
+    
+    end
+    
+    class Parameter
+    
+    end
+    
   end
 end

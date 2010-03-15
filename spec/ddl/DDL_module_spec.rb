@@ -3,7 +3,7 @@ include ACN::DDL
 
 describe "DDL Module" do
   
-  before :all do
+  before :each do
     @ddl = mock(ACN::DDL::DDL, :modules => [])
     @mod = DDLModule.new(@ddl, :uuid => "U#{UUID_1}")
     @ddl.stub!(:modules => [@mod])

@@ -1,3 +1,4 @@
+
 require 'locale'
 
 module ACN
@@ -5,15 +6,6 @@ module ACN
     class LanguageSet < DDLModule
 
       attr_accessor :languages
-      
-      # Creates a language set from Nokogiri output
-      def self.from_nokogiri(ddl, doc)
-        language_set = LanguageSet.new(ddl, :uuid => doc['uuid'])
-        doc.xpath('.//language').each do |xml|
-          language_set.add_language(Language.from_xml(xml))
-        end
-        return language_set
-      end
       
       def initialize(ddl, opts = {})
         @name = opts[:name] || ""
@@ -54,7 +46,17 @@ module ACN
           code = code.to_sym
         end
       end
+      
+      # Creates a language set from Nokogiri output
+      def self.from_nokogiri(ddl, doc)
+        language_set = LanguageSet.new(ddl, :uuid => doc['uuid'])
+        doc.xpath('.//language').each do |xml|
+          language_set.add_language(Language.from_xml(xml))
+        end
+        return language_set
+      end
     end
+    
     
     class Language
       attr_accessor :lang_code
@@ -82,9 +84,6 @@ module ACN
         end
         return lang
       end
-    
-    
-     
     end
     
   end
