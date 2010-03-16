@@ -66,13 +66,16 @@ describe "DDL Module" do
   
   describe "extends" do
     it "should find the existing module by UUID" do
-      
+      @extended_module = DDLModule.new(@ddl, :uuid => UUID_3)
+      @ddl.should_receive(:find_module).with(UUID_3).and_return(@extended_module)
+      @mod = DDLModule.new(@ddl, :uuid => UUID_2, :extends => {:uuid => UUID_3})
+      @mod.extends.should == @extended_module
     end
     
-    it "should add it's properties to the existing module" do
-      
+    it "should return nil if it does not extend another module" do
+      @mod = DDLModule.new(@ddl, :uuid => UUID_2)
+      @mod.extends.should == nil
     end
-    
   end
   
   describe "parameters" do

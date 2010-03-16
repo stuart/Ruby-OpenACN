@@ -10,6 +10,7 @@ module ACN
       attr_accessor :date
       attr_accessor :uuid_names
       attr_writer   :label
+      #attr_writer   :extends
       #TODO alternatefor and extends
       
       def initialize(ddl = nil, opts = {})
@@ -17,6 +18,7 @@ module ACN
         @date = opts[:date]
         @uuid_names = opts[:uuid_names] || {}
         @label = opts[:label] || {}
+        @extends = opts[:extends] || {}
         @ddl = ddl
         self.uuid_or_name = opts[:uuid]
       end
@@ -27,6 +29,11 @@ module ACN
         else
           @label[:text]
         end
+      end
+      
+
+      def extends
+       @ddl.find_module(@extends[:uuid]) if @extends[:uuid]
       end
       
       # # Replace the instance with uuid with this one.

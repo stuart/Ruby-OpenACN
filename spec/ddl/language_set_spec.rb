@@ -73,6 +73,22 @@ describe "Language Set :" do
         end.should raise_error("No translation for 'yellow' in language 'en_GB'")
       end
     end
+    
+    
+    describe "extending Language Sets" do
+      it "should extend the language set" do
+        @ddl.stub(:find_module).with(@lang_set.uuid).and_return(@lang_set)
+        @extending_lang_set = LanguageSet.new(@ddl, {:extends => {:uuid => @lang_set.uuid}})
+        @extending_lang_set.extends.should == @lang_set
+      end
+      
+      it "should include the translations from the extended language set" do
+        @ddl.stub(:find_module).with(@lang_set.uuid).and_return(@lang_set)
+        @extending_lang_set = LanguageSet.new(@ddl, {:extends => {:uuid => @lang_set.uuid}}
+        @extending_lang_set.translate('red').should == "red"
+      end
+      
+    end
   end
 
 end

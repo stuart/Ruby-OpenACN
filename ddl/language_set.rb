@@ -11,6 +11,7 @@ module ACN
         @name = opts[:name] || ""
         @languages = {}
         super(ddl,opts)
+        @languages.merge!(extends.languages) if extends.is_a?(LanguageSet)
       end
       
       def translate(key,lang_code = nil)
@@ -38,6 +39,7 @@ module ACN
         @languages.merge!({language.lang_code => language})
       end
       
+  
       # Make Locale to simple form and convert to symbol
       # A nil code will return nil.
       def self.lang_code_to_sym(code)

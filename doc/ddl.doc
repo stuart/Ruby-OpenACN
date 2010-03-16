@@ -1,12 +1,9 @@
-HOW TO USE DDL
-
-
 ACN::DDL::DDL
   read(IO) reads a DDL xml file. 
   write(IO) writes a DDL to a file
   
-  to_xml 
-  from_xml 
+  to_xml
+  from_xml
   errors returns array of errors in the DDL file [error_code, error_text, line_number]
   devices returns array of devices in the DDL, all array ops available
 

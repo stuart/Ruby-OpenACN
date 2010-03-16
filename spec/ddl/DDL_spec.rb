@@ -134,6 +134,13 @@ describe "DDL : " do
         @ddl.get_behavior_set(UUID_1).should == @mock_behaviour
     end
     
+    it "should return nil if the module does not exist" do
+        @mock_device.stub(:uuid => UUID_1)
+        @mock_behaviour.stub(:uuid => UUID_2)
+        @mock_language.stub(:uuid => UUID_3)
+        @ddl = DDL.from_xml(@ddl_file)
+        @ddl.get_module(nil).should == nil
+    end
   end
   
   
@@ -162,7 +169,7 @@ describe "DDL : " do
     it "should have a language assigned"
     
     it "should ask the correct language set to translate a string" do
-      #LanguageSet.unstub(:from_nokogiri) UNSTUB BREAKING OTHER SPECS!!
+      #LanguageSet.unstub(:from_nokogiri) UNSTUB IS BREAKING SPECS IN OTHER FILES!!
       #@ddl = DDL.from_xml("<DDL version='1.0'><languageset uuid='#{UUID_1}'><language lang='en-gb'><string key='colr'>colour</string></language></languageset></DDL>")
       #@ddl.translate('colr',:en_GB,UUID_1).should == 'colour'
     end
