@@ -8,9 +8,26 @@ classes for using the ACN Device Description Language (DDL)
 
 See www.openacn.org for the openACN C library and details of the ACN protocols.
 
+ACN consists of:
+  Root Layer Protocol (RLP)
+    A description of PDU and packet formats and basic operation of higher level protocols.
+
+  Device Description Language (DDL)
+    An XML schema describing devices which communicate via the ACN suite.
+    
+  Device Management Protocol (DMP)
+    The protocol with which devices send and receive commands. 
+    
+  Session Data Transport (SDT)
+    A reliable transport layer protocol on top of UDP with support for multicasting.
+    Designed to sit under DMP or other protocols.
+
+  Discovery:
+    Using SLP to discover what devices are on our network. 
+    
 Current status: 
         Work on DDL library has been started.
         DMP bindings not started.
         RLP not started.
-        STL not started.
+        SDT not started.
 

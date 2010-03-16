@@ -7,7 +7,6 @@ describe "Language Set :" do
     @ddl = mock(DDL, :modules => [])
   end
   
-  describe "loaded from Nokogiri xml" do
     before do
      @ddl_file = File.open(File.expand_path(File.dirname(__FILE__) + '/support/ddl_test.xml'))
      doc = Nokogiri.parse(@ddl_file)
@@ -84,11 +83,9 @@ describe "Language Set :" do
       
       it "should include the translations from the extended language set" do
         @ddl.stub(:find_module).with(@lang_set.uuid).and_return(@lang_set)
-        @extending_lang_set = LanguageSet.new(@ddl, {:extends => {:uuid => @lang_set.uuid}}
+        @extending_lang_set = LanguageSet.new(@ddl, {:extends => {:uuid => @lang_set.uuid}})
         @extending_lang_set.translate('red').should == "red"
       end
-      
-    end
-  end
 
+  end
 end

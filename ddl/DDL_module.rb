@@ -10,7 +10,7 @@ module ACN
       attr_accessor :date
       attr_accessor :uuid_names
       attr_writer   :label
-      #attr_writer   :extends
+      attr_writer   :extends
       #TODO alternatefor and extends
       
       def initialize(ddl = nil, opts = {})
@@ -31,7 +31,6 @@ module ACN
         end
       end
       
-
       def extends
        @ddl.find_module(@extends[:uuid]) if @extends[:uuid]
       end

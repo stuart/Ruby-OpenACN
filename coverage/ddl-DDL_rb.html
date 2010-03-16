@@ -29,16 +29,16 @@
           <tr>
             <td class="left_align"><a href="ddl-DDL_rb.html">ddl/DDL.rb</a></td>
             <td class='right_align'><tt>139</tt></td>
-            <td class='right_align'><tt>87</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>31.65%</tt></div>
+            <td class='right_align'><tt>88</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>32.37%</tt></div>
           <div class="percent_graph">
             <div class="covered" style="width:32px"></div>
             <div class="uncovered" style="width:68px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>36.78%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>38.64%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:37px"></div>
-            <div class="uncovered" style="width:63px"></div>
+            <div class="covered" style="width:39px"></div>
+            <div class="uncovered" style="width:61px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -549,7 +549,7 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line83">83</a>           @devices &lt;&lt; DeviceDescription.from_xml(self, xml)</pre></td>
+            <td><pre><a name="line83">83</a>           @devices &lt;&lt; DeviceDescription.from_nokogiri(self, xml)</pre></td>
           </tr>
         
           
@@ -573,7 +573,7 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line87">87</a>           @language_sets &lt;&lt; LanguageSet.from_xml(self, xml)</pre></td>
+            <td><pre><a name="line87">87</a>           @language_sets &lt;&lt; LanguageSet.from_nokogiri(self, xml)</pre></td>
           </tr>
         
           
@@ -591,13 +591,13 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line90">90</a>         doc.xpath('.//behaviourset').each do |xml|</pre></td>
+            <td><pre><a name="line90">90</a>         doc.xpath('.//behaviorset').each do |xml|</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line91">91</a>           @behavior_sets &lt;&lt; BehaviorSet.from_xml(self, xml)</pre></td>
+            <td><pre><a name="line91">91</a>           @behavior_sets &lt;&lt; BehaviorSet.from_nokogiri(self, xml)</pre></td>
           </tr>
         
           
@@ -813,18 +813,18 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line127">127</a>       def get_language(uuid)</pre></td>
+            <td><pre><a name="line127">127</a>       def get_language(uuid, locale = Locale.current)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line128">128</a>         #language_sets.each{|ls| resolve_uuid(uuid)}</pre></td>
+            <td><pre><a name="line128">128</a>         get_language_set(uuid).languages[locale]</pre></td>
           </tr>
         
           
           
-          <tr class="uncovered">
+          <tr class="inferred">
             <td><pre><a name="line129">129</a>       end</pre></td>
           </tr>
         
@@ -891,7 +891,7 @@
       </tbody>
     </table>
 
-    <p>Generated on 2010-01-07 13:48:59 +1000 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on 2010-03-16 15:14:05 +1000 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

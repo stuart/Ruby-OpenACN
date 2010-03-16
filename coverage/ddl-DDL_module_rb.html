@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="ddl-DDL_module_rb.html">ddl/DDL_module.rb</a></td>
-            <td class='right_align'><tt>64</tt></td>
-            <td class='right_align'><tt>48</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>34.38%</tt></div>
+            <td class='right_align'><tt>71</tt></td>
+            <td class='right_align'><tt>53</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>35.21%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:34px"></div>
-            <div class="uncovered" style="width:66px"></div>
+            <div class="covered" style="width:35px"></div>
+            <div class="uncovered" style="width:65px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>37.50%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>39.62%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:38px"></div>
-            <div class="uncovered" style="width:62px"></div>
+            <div class="covered" style="width:40px"></div>
+            <div class="uncovered" style="width:60px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -129,319 +129,361 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line13">13</a>       </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line14">14</a>       def initialize(ddl = nil, opts = {})</pre></td>
+            <td><pre><a name="line13">13</a>       attr_writer   :extends</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line15">15</a>         @provider = opts[:provider] || &quot;&quot;</pre></td>
+            <td><pre><a name="line14">14</a>       #TODO alternatefor and extends</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line16">16</a>         @date = opts[:date]</pre></td>
+            <td><pre><a name="line15">15</a>       </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line17">17</a>         @uuid_names = opts[:uuid_names] || {}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line18">18</a>         @label = opts[:label] || {}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line19">19</a>         @ddl = ddl</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line20">20</a>         self.uuid_or_name = opts[:uuid]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line21">21</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line22">22</a>       </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line23">23</a>       def label</pre></td>
+            <td><pre><a name="line16">16</a>       def initialize(ddl = nil, opts = {})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line24">24</a>         if @label[:text].nil?</pre></td>
+            <td><pre><a name="line17">17</a>         @provider = opts[:provider] || &quot;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line25">25</a>           @ddl.translate(@label[:key], @label[:set])</pre></td>
+            <td><pre><a name="line18">18</a>         @date = opts[:date]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line26">26</a>         else</pre></td>
+            <td><pre><a name="line19">19</a>         @uuid_names = opts[:uuid_names] || {}</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line27">27</a>           @label[:text]</pre></td>
+            <td><pre><a name="line20">20</a>         @label = opts[:label] || {}</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line28">28</a>         end</pre></td>
+            <td><pre><a name="line21">21</a>         @extends = opts[:extends] || {}</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line29">29</a>       end</pre></td>
+            <td><pre><a name="line22">22</a>         @ddl = ddl</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line30">30</a>       </pre></td>
+            <td><pre><a name="line23">23</a>         self.uuid_or_name = opts[:uuid]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line31">31</a>       # # Replace the instance with uuid with this one.</pre></td>
+            <td><pre><a name="line24">24</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line32">32</a>       def alternate_for(uuid)</pre></td>
+            <td><pre><a name="line25">25</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line26">26</a>       def label</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line33">33</a>         @ddl.find_module(uuid)</pre></td>
+            <td><pre><a name="line27">27</a>         if @label[:text].nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line28">28</a>           @ddl.translate(@label[:key], @label[:set])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line29">29</a>         else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line30">30</a>           @label[:text]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line31">31</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line32">32</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line33">33</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line34">34</a>       def extends</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line35">35</a>        @ddl.find_module(@extends[:uuid]) if @extends[:uuid]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line34">34</a>       end</pre></td>
+            <td><pre><a name="line36">36</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line35">35</a>       </pre></td>
+            <td><pre><a name="line37">37</a>       </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line36">36</a>       # Return a valid UUID</pre></td>
+            <td><pre><a name="line38">38</a>       # # Replace the instance with uuid with this one.</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line37">37</a>       # Drop the leading 'U' if it is an actual UUID from the XML </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line38">38</a>       # or get the UUID from the uuid_names hash if it is a UUIDname.</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line39">39</a>       def resolve_uuid(uuid_or_name) </pre></td>
+            <td><pre><a name="line39">39</a>       def alternate_for(uuid)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line40">40</a>         return uuid_or_name if UUID.validate(uuid_or_name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line41">41</a>         if uuid_or_name.chr == 'U'</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line42">42</a>           return uuid_or_name[1..-1] </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line43">43</a>         else</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line44">44</a>           return uuid_names[uuid_or_name.to_sym]</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line45">45</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line46">46</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line47">47</a>       </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line48">48</a>       # Set the uuid given a UUID or name</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line49">49</a>       # Check if the UUID is valid and set the @uuid attribute</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line50">50</a>       def uuid_or_name=(uuid_or_name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line51">51</a>         uuid_or_name ||= UUID.generate</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line52">52</a>         @uuid = resolve_uuid(uuid_or_name)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line53">53</a>         raise Exception.new(&quot;UUID is not unique&quot;) unless unique_uuid?(@uuid)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line54">54</a>         raise Exception.new(&quot;UUID is invalid&quot;) unless UUID.validate(@uuid)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line55">55</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line56">56</a>       </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line57">57</a>       private </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line58">58</a>       def unique_uuid?(uuid)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line59">59</a>         @ddl.modules.all?{|m| m.uuid != uuid || m == self}</pre></td>
+            <td><pre><a name="line40">40</a>         @ddl.find_module(uuid)</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a>       end</pre></td>
+            <td><pre><a name="line41">41</a>       end</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line61">61</a>       </pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line42">42</a>       </pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line62">62</a>     end</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line43">43</a>       # Return a valid UUID</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line44">44</a>       # Drop the leading 'U' if it is an actual UUID from the XML </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line45">45</a>       # or get the UUID from the uuid_names hash if it is a UUIDname.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line46">46</a>       def resolve_uuid(uuid_or_name) </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>   end</pre></td>
+            <td><pre><a name="line47">47</a>         return uuid_or_name if UUID.validate(uuid_or_name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line48">48</a>         if uuid_or_name.chr == 'U'</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line49">49</a>           return uuid_or_name[1..-1] </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line50">50</a>         else</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line51">51</a>           return uuid_names[uuid_or_name.to_sym]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line52">52</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line53">53</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line54">54</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line55">55</a>       # Set the uuid given a UUID or name</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line56">56</a>       # Check if the UUID is valid and set the @uuid attribute</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line57">57</a>       def uuid_or_name=(uuid_or_name)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line64">64</a> end</pre></td>
+            <td><pre><a name="line58">58</a>         uuid_or_name ||= UUID.generate</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line59">59</a>         @uuid = resolve_uuid(uuid_or_name)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line60">60</a>         raise Exception.new(&quot;UUID is not unique&quot;) unless unique_uuid?(@uuid)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line61">61</a>         raise Exception.new(&quot;UUID is invalid&quot;) unless UUID.validate(@uuid)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line62">62</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line63">63</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line64">64</a>       private </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>       def unique_uuid?(uuid)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line66">66</a>         @ddl.modules.all?{|m| m.uuid != uuid || m == self}</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line67">67</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line68">68</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line69">69</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line70">70</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line71">71</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on 2010-01-07 13:48:59 +1000 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on 2010-03-16 15:14:05 +1000 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

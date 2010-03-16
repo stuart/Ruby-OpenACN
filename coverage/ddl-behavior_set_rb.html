@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>spec/spec_helper.rb</title>
+    <title>ddl/behavior_set.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Openacn Ruby C0 Coverage Information - RCov</h1>
-    <h2>spec/spec_helper.rb</h2>
+    <h2>ddl/behavior_set.rb</h2>
 
     
 
@@ -27,18 +27,18 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="spec-spec_helper_rb.html">spec/spec_helper.rb</a></td>
-            <td class='right_align'><tt>7</tt></td>
-            <td class='right_align'><tt>4</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>57.14%</tt></div>
+            <td class="left_align"><a href="ddl-behavior_set_rb.html">ddl/behavior_set.rb</a></td>
+            <td class='right_align'><tt>6</tt></td>
+            <td class='right_align'><tt>6</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>83.33%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:57px"></div>
-            <div class="uncovered" style="width:43px"></div>
+            <div class="covered" style="width:83px"></div>
+            <div class="uncovered" style="width:17px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>50.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>83.33%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:50px"></div>
-            <div class="uncovered" style="width:50px"></div>
+            <div class="covered" style="width:83px"></div>
+            <div class="uncovered" style="width:17px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -57,43 +57,37 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line1">1</a> require File.expand_path(File.dirname(__FILE__) + '/../ddl/DDL.rb')</pre></td>
+            <td><pre><a name="line1">1</a> module ACN</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a> </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line3">3</a> # Some UUID's to use</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line4">4</a> UUID_1 = UUID.generate</pre></td>
+            <td><pre><a name="line2">2</a>   module DDL</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a> UUID_2 = UUID.generate</pre></td>
+            <td><pre><a name="line3">3</a>     class BehaviorSet &lt; DDLModule</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a> UUID_3 = UUID.generate</pre></td>
+            <td><pre><a name="line4">4</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line7">7</a> </pre></td>
+            <td><pre><a name="line5">5</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line6">6</a> end</pre></td>
           </tr>
         
       </tbody>

@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="ddl-language_set_rb.html">ddl/language_set.rb</a></td>
-            <td class='right_align'><tt>84</tt></td>
-            <td class='right_align'><tt>65</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>30.95%</tt></div>
+            <td class='right_align'><tt>92</tt></td>
+            <td class='right_align'><tt>69</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>27.17%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:31px"></div>
-            <div class="uncovered" style="width:69px"></div>
+            <div class="covered" style="width:27px"></div>
+            <div class="uncovered" style="width:73px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>29.23%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>26.09%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:29px"></div>
-            <div class="uncovered" style="width:71px"></div>
+            <div class="covered" style="width:26px"></div>
+            <div class="uncovered" style="width:74px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -57,216 +57,216 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line1">1</a> require 'locale'</pre></td>
+            <td><pre><a name="line1">1</a> </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line2">2</a> require 'locale'</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a> </pre></td>
+            <td><pre><a name="line3">3</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line3">3</a> module ACN</pre></td>
+            <td><pre><a name="line4">4</a> module ACN</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   module DDL</pre></td>
+            <td><pre><a name="line5">5</a>   module DDL</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     class LanguageSet &lt; DDLModule</pre></td>
+            <td><pre><a name="line6">6</a>     class LanguageSet &lt; DDLModule</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line6">6</a> </pre></td>
+            <td><pre><a name="line7">7</a> </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line7">7</a>       attr_accessor :languages</pre></td>
+            <td><pre><a name="line8">8</a>       attr_accessor :languages</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line8">8</a>       </pre></td>
+            <td><pre><a name="line9">9</a>       </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line9">9</a>       # Creates a language set from Nokogiri output</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line10">10</a>       def self.from_xml(ddl, doc)</pre></td>
+            <td><pre><a name="line10">10</a>       def initialize(ddl, opts = {})</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line11">11</a>         language_set = LanguageSet.new(ddl, :uuid =&gt; doc['uuid'])</pre></td>
+            <td><pre><a name="line11">11</a>         @name = opts[:name] || &quot;&quot;</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line12">12</a>         doc.xpath('.//language').each do |xml|</pre></td>
+            <td><pre><a name="line12">12</a>         @languages = opts[:languages] || {}</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line13">13</a>           language_set.add_language(Language.from_xml(xml))</pre></td>
+            <td><pre><a name="line13">13</a>         super(ddl,opts)</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line14">14</a>         end</pre></td>
+            <td><pre><a name="line14">14</a>         @languages.merge!(extends.languages) if extends.is_a?(LanguageSet)</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line15">15</a>         return language_set</pre></td>
+            <td><pre><a name="line15">15</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line16">16</a>       end</pre></td>
+            <td><pre><a name="line16">16</a>       </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line17">17</a>       </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line18">18</a>       def initialize(ddl, opts = {})</pre></td>
+            <td><pre><a name="line17">17</a>       def translate(key,lang_code = nil)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line19">19</a>         @name = opts[:name] || &quot;&quot;</pre></td>
+            <td><pre><a name="line18">18</a>         if lang_code.nil?</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line20">20</a>         @languages = {}</pre></td>
+            <td><pre><a name="line19">19</a>           lang_code = Locale.candidates(:type=&gt;:simple).detect{|c| @languages.keys.include?(c.to_s.to_sym)}.to_s</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line21">21</a>         super(ddl,opts)</pre></td>
+            <td><pre><a name="line20">20</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line22">22</a>       end</pre></td>
+            <td><pre><a name="line21">21</a>         </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line23">23</a>       </pre></td>
+            <td><pre><a name="line22">22</a>         language = @languages[LanguageSet.lang_code_to_sym(lang_code)]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line24">24</a>       def translate(key,lang_code = Locale.current.to_s)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line25">25</a>         language = @languages[lang_code.to_sym]</pre></td>
+            <td><pre><a name="line23">23</a>         raise &quot;No translation for language '#{lang_code}'&quot; if language.nil?</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line26">26</a>         translation = language.translate(key)</pre></td>
+            <td><pre><a name="line24">24</a>         </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line27">27</a>         while language &amp;&amp; !translation</pre></td>
+            <td><pre><a name="line25">25</a>         translation = language.translate(key)</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line28">28</a>           language = @languages[language.alt_lang.to_sym]</pre></td>
+            <td><pre><a name="line26">26</a>         </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line29">29</a>           translation = language.translate(key)</pre></td>
+            <td><pre><a name="line27">27</a>         while !translation</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line30">30</a>         end</pre></td>
+            <td><pre><a name="line28">28</a>           language = @languages[language.alt_lang]</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line31">31</a>         translation</pre></td>
+            <td><pre><a name="line29">29</a>           # Catch missing alt-languages here or missing translations</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line32">32</a>       end</pre></td>
+            <td><pre><a name="line30">30</a>           if language.nil?</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line33">33</a>       </pre></td>
+            <td><pre><a name="line31">31</a>             raise &quot;No translation for '#{key}' in language '#{lang_code}'&quot;</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line34">34</a>       def add_language(language)</pre></td>
+            <td><pre><a name="line32">32</a>           end</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line35">35</a>         @languages.merge!({language.lang_code =&gt; language})</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line33">33</a>           translation = language.translate(key)</pre></td>
           </tr>
         
           
           
-          <tr class="inferred">
+          <tr class="uncovered">
+            <td><pre><a name="line34">34</a>         end </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line35">35</a>         translation</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
             <td><pre><a name="line36">36</a>       end</pre></td>
           </tr>
         
@@ -279,289 +279,337 @@
           
           
           <tr class="uncovered">
-            <td><pre><a name="line38">38</a>       def get_language(uuid)</pre></td>
+            <td><pre><a name="line38">38</a>       def add_language(language)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line39">39</a>         uuid = resolve_uuid(uuid)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line40">40</a>         languages.values.find{|l| l.uuid == uuid}</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line41">41</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line42">42</a>       </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line43">43</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line44">44</a>     </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line45">45</a>     class Language</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line46">46</a>       attr_accessor :lang_code</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line47">47</a>       attr_accessor :alt_lang</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line48">48</a>       attr_accessor :strings</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line49">49</a>       </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line50">50</a>       def initialize</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line51">51</a>         @strings = {}</pre></td>
+            <td><pre><a name="line39">39</a>         @languages.merge!({language.lang_code =&gt; language})</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line52">52</a>       end</pre></td>
+            <td><pre><a name="line40">40</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line53">53</a>       </pre></td>
+            <td><pre><a name="line41">41</a>       </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line54">54</a>       def translate(key)</pre></td>
+            <td><pre><a name="line42">42</a>       # Make Locale to simple form and convert to symbol</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line43">43</a>       # A nil code will return nil.</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line44">44</a>       def self.lang_code_to_sym(code)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line55">55</a>         @strings[key]</pre></td>
+            <td><pre><a name="line45">45</a>         unless code.nil?</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line46">46</a>           code = Locale::Tag.parse(code).to_simple.to_s</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line47">47</a>           code = code.to_sym</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line48">48</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line49">49</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line50">50</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line51">51</a>       # Creates a language set from Nokogiri output</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line52">52</a>       def self.from_nokogiri(ddl, doc)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line53">53</a>         language_set = LanguageSet.new(ddl, :uuid =&gt; doc['uuid'])</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line54">54</a>         doc.xpath('.//language').each do |xml|</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line55">55</a>           language_set.add_language(Language.from_xml(xml))</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line56">56</a>         end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line57">57</a>         return language_set</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line58">58</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line59">59</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line60">60</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line61">61</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line62">62</a>     class Language</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line63">63</a>       attr_accessor :lang_code</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line64">64</a>       attr_accessor :alt_lang</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line65">65</a>       attr_accessor :strings</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line66">66</a>       </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line67">67</a>       def initialize</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line68">68</a>         @strings = {}</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line56">56</a>       end</pre></td>
+            <td><pre><a name="line69">69</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line57">57</a>       </pre></td>
+            <td><pre><a name="line70">70</a>       </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line58">58</a>       def add_string(key, string)</pre></td>
+            <td><pre><a name="line71">71</a>       def translate(key)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line59">59</a>         @strings[key] = string</pre></td>
+            <td><pre><a name="line72">72</a>         @strings[key]</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line60">60</a>       end</pre></td>
+            <td><pre><a name="line73">73</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line61">61</a>       </pre></td>
+            <td><pre><a name="line74">74</a>       </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line62">62</a>       def self.from_xml(doc)</pre></td>
+            <td><pre><a name="line75">75</a>       def add_string(key, string)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line63">63</a>         lang = Language.new()</pre></td>
+            <td><pre><a name="line76">76</a>         @strings[key] = string</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line77">77</a>       end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line64">64</a>         lang.lang_code = Language.convert_lang_code(doc['lang'])</pre></td>
+            <td><pre><a name="line78">78</a>       </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line65">65</a>         lang.alt_lang = Language.convert_lang_code(doc['altlang'])</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line66">66</a>         doc.xpath('.//string').each do |s|</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line67">67</a>           lang.strings.merge!(s['key'] =&gt; s.content)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line68">68</a>         end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line69">69</a>         return lang</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line70">70</a>       end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line71">71</a>     </pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line72">72</a>      # Make code match Locale</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line73">73</a>      def self.convert_lang_code(code)</pre></td>
+            <td><pre><a name="line79">79</a>       def self.from_xml(doc)</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line74">74</a>         code ||= Locale.current.to_s</pre></td>
+            <td><pre><a name="line80">80</a>         lang = Language.new()</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line75">75</a>         lang_code = code.split('-')</pre></td>
+            <td><pre><a name="line81">81</a>         lang.lang_code = LanguageSet.lang_code_to_sym(doc['lang'])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line76">76</a>         lang_code.last.upcase!</pre></td>
+            <td><pre><a name="line82">82</a>         lang.alt_lang = LanguageSet.lang_code_to_sym(doc['altlang'])</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line77">77</a>         lang_code.join('_').to_sym</pre></td>
+            <td><pre><a name="line83">83</a>         doc.xpath('.//string').each do |s|</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line78">78</a>      end</pre></td>
+            <td><pre><a name="line84">84</a>           lang.strings.merge!(s['key'] =&gt; s.content)</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line79">79</a>      </pre></td>
+            <td><pre><a name="line85">85</a>         end</pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line80">80</a>     end</pre></td>
+            <td><pre><a name="line86">86</a>         return lang</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line87">87</a>       end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="uncovered">
+            <td><pre><a name="line88">88</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line81">81</a>     </pre></td>
+            <td><pre><a name="line89">89</a>     </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line82">82</a>   end</pre></td>
+            <td><pre><a name="line90">90</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>   </pre></td>
+            <td><pre><a name="line91">91</a>   </pre></td>
           </tr>
         
           
           
           <tr class="uncovered">
-            <td><pre><a name="line84">84</a> end</pre></td>
+            <td><pre><a name="line92">92</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on 2010-01-07 13:48:59 +1000 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on 2010-03-16 15:14:06 +1000 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>
